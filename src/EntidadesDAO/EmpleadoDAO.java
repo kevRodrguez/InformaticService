@@ -27,45 +27,7 @@ public class EmpleadoDAO {
     public EmpleadoDAO() {
         this.CN= new cn();
     }
-    public ArrayList<Jugador> ConsultarJugadores(cnBKB conexion){
-        ArrayList<Jugador> listadoJugadores = new ArrayList<Jugador>();
-        Jugador jugadorTemporal;
-        // Consulta SQL con parámetros
-        String sSQL = "Call  consultar_jugadores()";
-        
-        try {
-            
-            // Usar PreparedStatement para consultas parametrizadas
-            CallableStatement cs = conexion.getConexion().prepareCall(sSQL);
-            
-            // Ejecutar la consulta
-            ResultSet rs = cs.executeQuery();
-            
-            // Procesar los resultados
-            while (rs.next()) {
-                jugadorTemporal = new Jugador(
-                        rs.getInt("id_jugador"),
-                        rs.getString("nombre"),
-                        rs.getString("nombre_equipo"),
-                        rs.getInt("dorsal"),
-                        rs.getDouble("estatura"),
-                        rs.getString("posicion")
-                );
-                
-                listadoJugadores.add(jugadorTemporal);
-            }
-            
-            // Cerrar el ResultSet y el CallableStatement
-            rs.close();
-            cs.close();
-            
-            return listadoJugadores;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "¡¡ERROR consulta!!", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        return listadoJugadores;
-    }
+   
     
     public ArrayList<Empleado> ConsultarUsuarios(){
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
