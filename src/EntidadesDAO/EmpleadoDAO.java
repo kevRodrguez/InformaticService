@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
 package EntidadesDAO;
 
 import Entidades.Empleado;
@@ -23,7 +23,7 @@ public class EmpleadoDAO {
     private Connection con;
     private cn CN;
     private ResultSet rs;
-
+    
     public EmpleadoDAO() {
         this.CN= new cn();
     }
@@ -32,15 +32,15 @@ public class EmpleadoDAO {
         Jugador jugadorTemporal;
         // Consulta SQL con parámetros
         String sSQL = "Call  consultar_jugadores()";
-            
+        
         try {
-
+            
             // Usar PreparedStatement para consultas parametrizadas
             CallableStatement cs = conexion.getConexion().prepareCall(sSQL);
-
+            
             // Ejecutar la consulta
             ResultSet rs = cs.executeQuery();
-
+            
             // Procesar los resultados
             while (rs.next()) {
                 jugadorTemporal = new Jugador(
@@ -51,54 +51,102 @@ public class EmpleadoDAO {
                         rs.getDouble("estatura"),
                         rs.getString("posicion")
                 );
-
+                
                 listadoJugadores.add(jugadorTemporal);
             }
-
+            
             // Cerrar el ResultSet y el CallableStatement
             rs.close();
             cs.close();
-
+            
             return listadoJugadores;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "¡¡ERROR consulta!!", JOptionPane.ERROR_MESSAGE);
         }
-
+        
         return listadoJugadores;
     }
     
     public ArrayList<Empleado> ConsultarUsuarios(){
-        ArrayList<Empleado> usuarios = new ArrayList<Empleado>();
+        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         String sSQL = "{call sp_mostrar_usuarios};";
-            
+        
         try {
-
+            
             CallableStatement cs =this.CN.getConexion().prepareCall(sSQL);
-
-             rs = cs.executeQuery();
-
-            // Procesar los resultados
+            
+            rs = cs.executeQuery();
             while (rs.next()) {
-                Empleado usuario = new Empleado();
-                usuario.setIdEmpleado(rs.getInt(1));
-                usuario.setNombre(rs.getString(2));
-                usuario.setApellido(rs.getString(3));
-                usuario.set
-                );
-
-                listadoJugadores.add(jugadorTemporal);
+                Empleado emp = new Empleado();
+                emp.setIdEmpleado(rs.getInt(1));
+                emp.setNombre(rs.getString(2));
+                emp.setApellido(rs.getString(3));
+                emp.setUsuario(rs.getString(4));
+                emp.setContraseña(rs.getString(5));
+                empleados.add(emp);
+                
             }
-
-            // Cerrar el ResultSet y el PreparedStatement
-            rs.close();
-            cs.close();
-
-            return listadoJugadores;
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "¡¡ERROR xd!!", JOptionPane.ERROR_MESSAGE);
         }
-
-        return listadoJugadores;
+        
+        return empleados;
     }
-    
+    public boolean InsertarEmpleado(Empleado emp)
+    {
+        String sql ="{call sp_insertar_empleado(?,?,?,?,?)}";
+        try {
+            CallableStatement cs= this.CN.getConexion().prepareCall(sql);
+            cs.setString(1, emp.getNombre());
+            cs.setString(2, emp.getApellido());
+            cs.setString(3, emp.getUsuario());
+            cs.setString(4, emp.getContraseña());
+            cs.setString(5, emp.getRol());
+            int filas=cs.executeUpdate();
+            if (filas>0) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    public boolean ActualizarEmpleado(Empleado emp)
+    {
+        String sql = "{CALL sp_actualizar_empleado(?,?,?,?,?,?)}";
+        
+        try  {
+            CallableStatement cs = this.CN.getConexion().prepareCall(sql);
+            cs.setInt(1, emp.getIdEmpleado());
+            cs.setString(2, emp.getNombre());
+            cs.setString(3, emp.getApellido());
+            cs.setString(4, emp.getUsuario());
+            cs.setString(5, emp.getContraseña());
+            cs.setString(6, emp.getRol());
+            int filas=cs.executeUpdate();
+            if (filas>0) {
+                return true;
+            }
+            System.out.println("Equipo actualizado exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el equipo: " + e.getMessage());
+        }
+        return false;
+    }
+    public boolean EliminarJugador(int idEmpleado) {
+        String sql = "CALL eliminar_jugador(?)";
+        
+        try {
+            CallableStatement cs = CN.getConexion().prepareCall(sql) ;
+            cs.setInt(1, idEmpleado);
+            int filas=cs.executeUpdate();
+            if (filas>0) {
+                return true;
+            }
+            System.out.println("Equipo eliminado exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error al eliminar el equipo: " + e.getMessage());
+        }
+        return false;
+    }
 }
