@@ -44,7 +44,7 @@ public class frmProducto extends javax.swing.JInternalFrame {
         btnRecargar2 = new javax.swing.JButton();
         btnRecargar3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        paneDescripcion = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -164,10 +164,10 @@ public class frmProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        jTextPane1.setForeground(new java.awt.Color(40, 40, 40));
-        jScrollPane2.setViewportView(jTextPane1);
+        paneDescripcion.setBackground(new java.awt.Color(255, 255, 255));
+        paneDescripcion.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        paneDescripcion.setForeground(new java.awt.Color(40, 40, 40));
+        jScrollPane2.setViewportView(paneDescripcion);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -251,9 +251,9 @@ public class frmProducto extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(48, 48, 48)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
         );
@@ -328,11 +328,11 @@ public class frmProducto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lblUser2;
     private javax.swing.JLabel lblUser3;
     private javax.swing.JLabel lblUser4;
     private javax.swing.JLabel lblUser7;
+    private javax.swing.JTextPane paneDescripcion;
     private javax.swing.JTable tableEmpleados;
     private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtBuscarEmpleado;
