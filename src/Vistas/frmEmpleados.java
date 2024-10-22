@@ -8,12 +8,12 @@ package Vistas;
  *
  * @author kevrodriguez
  */
-public class frmUsuarios extends javax.swing.JInternalFrame {
+public class frmEmpleados extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmUsuarios
      */
-    public frmUsuarios() {
+    public frmEmpleados() {
         initComponents();
     }
 
@@ -39,10 +39,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtContraseñaEmpleado = new javax.swing.JTextField();
         lblUser6 = new javax.swing.JLabel();
         cbRolEmpleado = new javax.swing.JComboBox<>();
+        btnAgregar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
-        btnRecargar1 = new javax.swing.JButton();
-        btnRecargar2 = new javax.swing.JButton();
-        btnRecargar3 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEmpleados = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -98,8 +98,30 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         cbRolEmpleado.setForeground(new java.awt.Color(40, 40, 40));
         cbRolEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Técnico", "Vendor" }));
 
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnAgregar.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnEditar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         btnRecargar.setBackground(new java.awt.Color(255, 255, 255));
-        btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnAgregar.png"))); // NOI18N
+        btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnRecargar.png"))); // NOI18N
         btnRecargar.setBorder(null);
         btnRecargar.setBorderPainted(false);
         btnRecargar.setContentAreaFilled(false);
@@ -109,36 +131,14 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRecargar1.setBackground(new java.awt.Color(255, 255, 255));
-        btnRecargar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnEditar.png"))); // NOI18N
-        btnRecargar1.setBorder(null);
-        btnRecargar1.setBorderPainted(false);
-        btnRecargar1.setContentAreaFilled(false);
-        btnRecargar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnEliminar.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecargar1ActionPerformed(evt);
-            }
-        });
-
-        btnRecargar2.setBackground(new java.awt.Color(255, 255, 255));
-        btnRecargar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnRecargar.png"))); // NOI18N
-        btnRecargar2.setBorder(null);
-        btnRecargar2.setBorderPainted(false);
-        btnRecargar2.setContentAreaFilled(false);
-        btnRecargar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecargar2ActionPerformed(evt);
-            }
-        });
-
-        btnRecargar3.setBackground(new java.awt.Color(255, 255, 255));
-        btnRecargar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Usuarios/btnEliminar.png"))); // NOI18N
-        btnRecargar3.setBorder(null);
-        btnRecargar3.setBorderPainted(false);
-        btnRecargar3.setContentAreaFilled(false);
-        btnRecargar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecargar3ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -157,13 +157,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnAgregar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditar)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnRecargar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnRecargar1)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnRecargar2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnRecargar3))
+                                .addComponent(btnEliminar))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -208,10 +208,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnRecargar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRecargar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRecargar2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnRecargar3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -324,21 +324,21 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecargarActionPerformed
 
-    private void btnRecargar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargar1ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRecargar1ActionPerformed
-
-    private void btnRecargar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRecargar2ActionPerformed
-
-    private void btnRecargar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRecargar3ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed
         // TODO add your handling code here:
@@ -346,11 +346,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscarEmpleado;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRecargar;
-    private javax.swing.JButton btnRecargar1;
-    private javax.swing.JButton btnRecargar2;
-    private javax.swing.JButton btnRecargar3;
     private javax.swing.JComboBox<String> cbRolEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
