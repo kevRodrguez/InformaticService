@@ -29,9 +29,9 @@ public class EmpleadoDAO {
     }
     
     
-    public ArrayList<Empleado> ConsultarUsuarios(){
+    public ArrayList<Empleado> ConsultarEmpleados(){
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-        String sSQL = "{call sp_mostrar_usuarios()};";
+        String sSQL = "{call sp_mostrar_empleados()};";
         
         try {
             
@@ -44,7 +44,7 @@ public class EmpleadoDAO {
                 emp.setNombre(rs.getString(2));
                 emp.setApellido(rs.getString(3));
                 emp.setUsuario(rs.getString(4));
-                emp.setContraseña(rs.getString(5));
+                emp.setRol(rs.getString(5));
                 empleados.add(emp);
                 
             }

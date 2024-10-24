@@ -4,6 +4,11 @@
  */
 package Vistas;
 
+import Entidades.Empleado;
+import EntidadesDAO.EmpleadoDAO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kevrodriguez
@@ -13,10 +18,26 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmUsuarios
      */
+    EmpleadoDAO empDao;
+    DefaultTableModel modelEmpleados;
+    ArrayList<Empleado> empleados;
     public frmEmpleados() {
         initComponents();
+        this.empDao= new EmpleadoDAO();
+        this.modelEmpleados=(DefaultTableModel) this.tableEmpleados.getModel();
+        this.empleados=new ArrayList();
+        this.RecargarEmpleados();
     }
-
+    private void RecargarEmpleados()
+    {
+        this.modelEmpleados.setRowCount(0);
+        this.empleados=this.empDao.ConsultarEmpleados();
+        for (int i = 0; i < this.empleados.size(); i++) {
+            Empleado emp=this.empleados.get(i);
+            String[] data= {emp.getNombre(),emp.getApellido(),emp.getUsuario(),emp.getRol()};
+            this.modelEmpleados.addRow(data);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,17 +244,9 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Empleado", "Rol"
+                "Nombre", "Apellido", "Usuario", "Rol"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tableEmpleados);
         if (tableEmpleados.getColumnModel().getColumnCount() > 0) {
             tableEmpleados.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -270,17 +283,18 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4)
                 .addGap(356, 356, 356))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUser7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBuscarEmpleado)))
-                        .addGap(274, 274, 274))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnBuscarEmpleado))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)

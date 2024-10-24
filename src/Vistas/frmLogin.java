@@ -74,12 +74,19 @@ public class frmLogin extends javax.swing.JFrame {
 
         btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Login/btnEntrar.png"))); // NOI18N
+        btnEntrar.setToolTipText("Iniciar Sesion");
         btnEntrar.setBorder(null);
         btnEntrar.setBorderPainted(false);
         btnEntrar.setContentAreaFilled(false);
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
+            }
+        });
+        btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEntrarKeyPressed(evt);
             }
         });
 
@@ -219,6 +226,11 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.MostrarPassword();
     }//GEN-LAST:event_chkVerContraseñaActionPerformed
+
+    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnEntrarKeyPressed
 
     private void MostrarPassword()
     {
