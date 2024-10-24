@@ -27,11 +27,11 @@ public class EmpleadoDAO {
     public EmpleadoDAO() {
         this.CN= new cn();
     }
-   
+    
     
     public ArrayList<Empleado> ConsultarUsuarios(){
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-        String sSQL = "{call sp_mostrar_usuarios};";
+        String sSQL = "{call sp_mostrar_usuarios()};";
         
         try {
             
@@ -54,6 +54,30 @@ public class EmpleadoDAO {
         }
         
         return empleados;
+    }
+    public boolean validarPassword(String usuario, String password){
+        
+        String sSQL = "{call sp_validar_password(?,?)};";
+        int filasEncontradas=0;
+        try {
+            
+            CallableStatement cs =this.CN.getConexion().prepareCall(sSQL);
+            cs.setString(1, usuario);
+            cs.setString(2,password);
+            rs = cs.executeQuery();
+            while (rs.next()) {
+                filasEncontradas=rs.getInt("cantidad_usuarios");
+                
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "¡¡ERROR xd!!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (filasEncontradas>0) {
+            return true;
+        }
+        return false;
     }
     public boolean InsertarEmpleado(Empleado emp)
     {

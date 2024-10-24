@@ -7,6 +7,8 @@ package Vistas;
 import java.util.Optional;
 import javax.swing.JOptionPane;
 import Entidades.Empleado;
+import Entidades.Hash;
+import EntidadesDAO.EmpleadoDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +22,7 @@ public class frmLogin extends javax.swing.JFrame {
     /**
      * Creates new form frmLogin
      */
+    EmpleadoDAO empDao= new EmpleadoDAO();
     public frmLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -186,10 +189,19 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        mdi formMDI = new mdi(); //frmInventario(empleado)
+        String usuario=this.txtUsuario.getText().trim();
+        String password=Hash.toSHA1(this.txtContraseña.getText().trim());
+        if (this.empDao.validarPassword(usuario, password)) {
+                    mdi formMDI = new mdi(); //frmInventario(empleado)
         formMDI.setVisible(true);
         formMDI.setLocationRelativeTo(null);
         setVisible(false);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, "El usuario o la contraseña son incorrectos", "ACCESO DENEGADO",JOptionPane.ERROR_MESSAGE);
+        }
+        
         
         
       
