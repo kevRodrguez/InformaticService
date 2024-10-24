@@ -45,9 +45,9 @@ public class frmLogin extends javax.swing.JFrame {
         lblRol = new javax.swing.JLabel();
         lblRol1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
         chkVerContraseña = new javax.swing.JCheckBox();
+        txtContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +71,6 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsuario.setBackground(new java.awt.Color(244, 244, 244));
         txtUsuario.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(40, 40, 40));
-
-        txtContraseña.setBackground(new java.awt.Color(244, 244, 244));
-        txtContraseña.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(40, 40, 40));
 
         btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Elementos/Login/btnEntrar.png"))); // NOI18N
@@ -103,6 +99,9 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
+        txtContraseña.setBackground(new java.awt.Color(244, 244, 244));
+        txtContraseña.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -116,19 +115,19 @@ public class frmLogin extends javax.swing.JFrame {
                         .addGap(336, 336, 336)
                         .addComponent(lblRol1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
-                            .addComponent(txtContraseña)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(308, 308, 308)
                         .addComponent(lblRol))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(chkVerContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(294, 294, 294)
                         .addComponent(btnEntrar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(chkVerContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(191, 191, 191)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                            .addComponent(txtContraseña))))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -142,9 +141,9 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblRol)
-                .addGap(18, 18, 18)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkVerContraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +159,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addContainerGap(375, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(273, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(234, 234, 234))
         );
@@ -170,7 +169,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -218,8 +217,18 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void chkVerContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVerContraseñaActionPerformed
         // TODO add your handling code here:
+        this.MostrarPassword();
     }//GEN-LAST:event_chkVerContraseñaActionPerformed
 
+    private void MostrarPassword()
+    {
+        if (this.chkVerContraseña.isSelected()) {
+            this.txtContraseña.setEchoChar((char)0);            
+        }
+        else{
+            this.txtContraseña.setEchoChar('*');
+        }    
+    }
     /**
      * @param args the command line arguments
      */
@@ -264,7 +273,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblRol1;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
